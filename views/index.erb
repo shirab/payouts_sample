@@ -1,0 +1,20 @@
+<section>
+  <h2>Request</h2>
+  <form action="/" enctype="application/x-www-form-urlencoded" method="post">
+    <p><input type="text" placeholder="Access Token" name="access_token" value="<%= params['access_token'] %>"></p>
+    <p><input type="text" placeholder="Phone" name="phone" value="<%= params['phone'] %>"></p>
+    <p><input type="text" placeholder="Amount" name="amount" value="<%= params['amount'] %>"></p>
+    <p><input type="text" placeholder="Note" name="note" value="<%= params['note'] %>"></p>
+    <p><input type="text" placeholder="Audience (optional)" name="audience" value="<%= params['audience'] %>"></p>
+    <p><button type="reset">Reset Form</button> <button type="submit">Send Payment</button></p>
+  </form>
+</section>
+<section>
+  <h2>Response</h2>
+  <% if @payouts_response %>
+  <p>Status Code: <%= @payouts_response.code %></p>
+  <pre><code><%= JSON.pretty_generate JSON.parse(@payouts_response.body) %></code></pre>
+  <% else %>
+  <p>None. Send a payment to get a response.</p>
+  <% end %>
+</section>
